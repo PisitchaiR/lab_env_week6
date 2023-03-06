@@ -1,14 +1,13 @@
 pipeline{
     agent any
-    environment {
-        GIT_CREDS = credentials('github')
+    parameters {
+        string(name: 'NAME', defaultValue: 'Uthred', description: 'Entere your name')
+        choice(name: 'CITY', choices: ['Bebbanburg', 'Mercia', 'East Anglia'], description: 'Choose your city')
     }
     stages {
-        stage('abc'){
-            steps{
-                sh 'echo "Git user is $GIT_CREDS_USR"'
-                sh 'echo "Git password is $GIT_CREDS_PSW"'
-                sh 'echo "Current build number is $BUILD_NUMBER"'
+        stage('Hello') {
+            steps {
+                echo "Hello ${params.NAME} from ${params.CITY}"
             }
         }
     }
