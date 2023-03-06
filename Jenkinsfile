@@ -9,4 +9,12 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo "Cleaning up"
+        }
+        failure {
+            echo "Failed"
+        }
+    }
 }
