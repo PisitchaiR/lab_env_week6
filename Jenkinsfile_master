@@ -9,12 +9,13 @@ pipeline {
 
         stage('tigger to slave job')
         {
-            environment{
-                name = "thun"
-                age = "20"
-            }
+            
             steps{
-                build job: 'slave', parameters: [string(name: 'name', value: env.name), string(name: 'age', value: env.age)]
+                script{
+                    def data = readFile(file: 'text.txt')
+                    def lines = data.split()
+                    build job: 'slave', parameters: [string(name: 'name', value: lines.get(0)), string(name: 'age', value: lines.get(1))]
+                }
             }
         }
     }
