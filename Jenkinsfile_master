@@ -14,6 +14,8 @@ pipeline {
                 script{
                     def data = readFile(file: 'text.txt')
                     def lines = data.split()
+                    echo "Name: ${lines.get(0)}"
+                    echo "Age: ${lines.get(1)}"
                     build job: 'slave', parameters: [string(name: 'name', value: lines.get(0)), string(name: 'age', value: lines.get(1))]
                 }
             }
