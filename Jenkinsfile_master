@@ -14,7 +14,7 @@ pipeline {
                 age = "20"
             }
             steps{
-                build job: 'slave', parameters: [string(name: 'name', value: $name), string(name: 'age', value: $age)]
+                build job: 'slave', parameters: [string(name: 'name', value: env.name), string(name: 'age', value: env.age)]
             }
         }
     }
