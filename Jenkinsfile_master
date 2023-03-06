@@ -9,13 +9,18 @@ pipeline {
 
         stage('tigger to slave job')
         {
-            
             steps{
-                script{
-                    def data = readFile("data.json")
-                    echo "name: ${data.name}"
-                    
-                    // build job: 'slave', parameters: [string(name: 'name', value: lines.get(0)), string(name: 'age', value: lines.get(1))]
+                parallel{
+                    stage("1"){
+                        steps{
+                            echo "1"
+                        }
+                    }
+                    stage("2"){
+                        steps{
+                            echo "1"
+                        }
+                    }
                 }
             }
         }
