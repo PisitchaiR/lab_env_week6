@@ -25,9 +25,20 @@ pipeline {
             }
         }
         stage('Regression tests'){
-            steps {
-                sh "echo Regression testsd"
+           steps{
+            parallel{
+                stage('Regression tests 1'){
+                    steps{
+                        sh "echo Regression tests 1"
+                    }
+                }
+                stage('Regression tests 2'){
+                    steps{
+                        sh "echo Regression tests 2"
+                    }
+                }
             }
+           }
         }
         stage('Release to production')
         {
