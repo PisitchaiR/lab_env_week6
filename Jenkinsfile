@@ -21,18 +21,12 @@ pipeline {
         stage('deploy')
         {
             steps {
-                sh "echodd Deploy"
+                sh "echo Deploy"
             }
         }
         stage('Regression tests'){
             steps {
-                parallel{
-                    stage('chrome'){
-                        steps{
-                            bat "echo chrome"
-                        }
-                    }
-                }
+                sh "echo Regression tests"
             }
         }
         stage('Release to production')
