@@ -27,7 +27,18 @@ pipeline {
         stage('Regression tests')
         {
             steps {
-                sh "echo Regression tests"
+                parallel{
+                    stage('chrome'){
+                        steps{
+                            bat "echo chrome"
+                        }
+                    }
+                    stage('safari'){
+                        steps{
+                            bat "echo chrome"
+                        }
+                    }
+                }
             }
         }
         stage('Release to production')
