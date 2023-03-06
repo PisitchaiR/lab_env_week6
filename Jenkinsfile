@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Regression tests'){
             steps {
-                sh "echo Regression tests"
+                sh "echo Regression testsd"
             }
         }
         stage('Release to production')
