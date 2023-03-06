@@ -9,8 +9,12 @@ pipeline {
 
         stage('tigger to slave job')
         {
+            environment{
+                name = "thun",
+                age = "20"
+            }
             steps{
-                build job: 'slave', parameters: [string(name: 'name', value: 'master'), string(name: 'age', value: '20')]
+                build job: 'slave', parameters: [string(name: 'name', value: $name), string(name: 'age', value: $age)]
             }
         }
     }
