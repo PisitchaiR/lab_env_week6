@@ -1,24 +1,31 @@
 pipeline {
-    agent any
-    stages{
-        stage('Welcome to master'){
-            steps{
-                echo 'Welcome to master'
-            }
-        }
-
-        stage('tigger to slave job')
-        {
-            steps{
-                parallel{
-                    stage("1"){
-                        steps{
-                            echo "1"
+    agent none
+    stages {
+        stage('Run Tests') {
+            parallel {
+                stage('Test On Windows') {
+                    agent {
+                        label "windows"
+                    }
+                    steps {
+                        bat "run-tests.bat"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
                         }
                     }
-                    stage("2"){
-                        steps{
-                            echo "1"
+                }
+                stage('Test On Linux') {
+                    agent {
+                        label "linux"
+                    }
+                    steps {
+                        sh "run-tests.sh"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
                         }
                     }
                 }
