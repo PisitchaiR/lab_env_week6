@@ -34,7 +34,7 @@ pipeline {
                 }
                 stage('Regression tests 2'){
                     steps{
-                        sh "echo Regression tests 2"
+                        sh "echo Regression testsd 2"
                     }
                 }
             }
