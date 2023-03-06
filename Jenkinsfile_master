@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        label 'master'
+    }
+
+    stages{
+        stage('Welcome to master'){
+            steps{
+                echo 'Welcome to master'
+            }
+        }
+
+        stage('tigger to slave job')
+        {
+            steps{
+                build job: 'slave', parameters: [string(name: 'name', value: 'master'), string(name: 'age', value: '20')]
+            }
+        }
+    }
+}
