@@ -13,8 +13,8 @@ pipeline {
             steps{
                 script{
                     def data = readFile(file: 'data.json')
-                    def data = data.readJSON()
-                    echo data
+                    def json = data.readJSON()
+                    echo json
                     
                     // build job: 'slave', parameters: [string(name: 'name', value: lines.get(0)), string(name: 'age', value: lines.get(1))]
                 }
