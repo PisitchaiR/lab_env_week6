@@ -10,7 +10,7 @@ pipeline {
         stage('tigger to slave job')
         {
             environment{
-                name = "thun",
+                name = "thun"
                 age = "20"
             }
             steps{
