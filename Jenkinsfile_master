@@ -10,7 +10,7 @@ pipeline {
         stage('tigger to slave job')
         {
             steps{
-                build job: 'Jenkinsfile_slave', parameters: [string(name: 'name', value: 'master'), string(name: 'age', value: '20')]
+                build job: 'slave', parameters: [string(name: 'name', value: 'master'), string(name: 'age', value: '20')]
             }
         }
     }
