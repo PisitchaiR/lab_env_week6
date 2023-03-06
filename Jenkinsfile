@@ -21,7 +21,7 @@ pipeline {
         stage('deploy')
         {
             steps {
-                sh "echo Deploy"
+                sh "echo Depldoy"
             }
         }
         stage('Regression tests'){
