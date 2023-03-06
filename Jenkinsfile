@@ -24,16 +24,10 @@ pipeline {
                 sh "echo Deploy"
             }
         }
-        stage('Regression tests')
-        {
+        stage('Regression tests'){
             steps {
                 parallel{
                     stage('chrome'){
-                        steps{
-                            bat "echo chrome"
-                        }
-                    }
-                    stage('safari'){
                         steps{
                             bat "echo chrome"
                         }
