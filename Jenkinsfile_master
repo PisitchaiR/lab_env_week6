@@ -6,7 +6,7 @@ pipeline {
                 try{
                     sh 'docker ps -a'
                 }
-                catch{
+                catch(){
                     echo "Failed on run docker"
                 }
             }
