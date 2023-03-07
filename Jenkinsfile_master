@@ -1,21 +1,12 @@
 pipeline {
-  agent any
-​
-  stages {
-      stage('Prompt for input') {
-          steps {
-              script {
-                  def userInput
-                  userInput = input message: 'Enter a value:', id: 'user_input'
-                  try {
-                      echo "User input: ${userInput}"
-                  } catch (Exception e) {
-                      userInput = input message: 'Invalid input. Please enter a valid value:', id: 'user_input'
-                      retry(3)
-                  }
-              }
-          }
-      }
-  }
-
+    agent any
+    stages{
+        stage('trigger slave item'){
+            steps{
+               build job: 'slave', parameters:[
+                    string(name: 'name', value: 'Slave'),
+                    string(name: 'age', value: '20')]
+            }
+        }
+    }
 }
