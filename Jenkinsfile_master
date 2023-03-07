@@ -3,13 +3,11 @@ pipeline {
     stages {
         stage('run docker'){
             steps{
-                script{
-                    try{
-                        sh 'docker ps -a'
-                    }
-                    catch(()=>{
-                        echo "Failed on run docker"
-                    })
+                try{
+                    sh 'docker ps -a'
+                }
+                catch{
+                    echo "Failed on run docker"
                 }
             }
         }
