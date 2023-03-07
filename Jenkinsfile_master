@@ -2,12 +2,14 @@ pipeline {
     agent none
     stages {
         stage('run docker'){
-            script{
-                try{
-                    sh 'docker ps -a'
-                }
-                catch{
-                    echo "Failed on run docker"
+            steps{
+                script{
+                    try{
+                        sh 'docker ps -a'
+                    }
+                    catch(){
+                        echo "Failed on run docker"
+                    }
                 }
             }
         }
